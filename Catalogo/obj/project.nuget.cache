@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "Bq6bXcymilrk21jyln951UKpmBFu8TSGfEkWwhvWM9acN4lYU9UThgUJ7NxKVMgaZZCsO8qM4UpI4n77mn3TRA==",
+  "dgSpecHash": "CA6IKAeGRzXGgv1LdAsr30vxdtVlgbAWKEEqaUvkxYJ/gubOB3OhBS83f3PgJt6zVEjyjQj8/43Dg5BRMcuXmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dioge\\OneDrive\\Documentos\\GitHub\\catalogo-OLFA\\Catalogo\\Catalogo.csproj",
-=======
-  "dgSpecHash": "/1h57D+cmovO6cJbd8TEiIDN9q7utPlWF7fpkc8pp/dY+8tsotDtCMY7HNWpohq5g9e6ZovT9X3Su0ezC7t+yQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\dioge\\Source\\Repos\\catalogo-OLFA\\Catalogo\\Catalogo.csproj",
->>>>>>> 1d46c2dd4f6d8e95d3ed294ad71b5529c2b9c262
+  "projectFilePath": "C:\\Users\\dioge\\source\\repos\\catalogo-OLFA\\Catalogo\\Catalogo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dioge\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\dioge\\.nuget\\packages\\bouncycastle.netcore\\2.2.1\\bouncycastle.netcore.2.2.1.nupkg.sha512",

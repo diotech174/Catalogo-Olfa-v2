@@ -13,8 +13,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Catalogo
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\dioge\OneDrive\Documentos\GitHub\catalogo-OLFA\Catalogo\
-=======
-build_property.ProjectDir = C:\Users\dioge\Source\Repos\catalogo-OLFA\Catalogo\
->>>>>>> 1d46c2dd4f6d8e95d3ed294ad71b5529c2b9c262
+build_property.ProjectDir = C:\Users\dioge\source\repos\catalogo-OLFA\Catalogo\

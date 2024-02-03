@@ -114,7 +114,7 @@ namespace Catalogo
                             var canvasParagrafos = new PdfCanvas(pdf.GetLastPage());
 
                             var paragrafo1 = new Paragraph(file)
-                                .SetFont(PdfFontFactory.CreateFont("c:\\windows\\fonts\\CascadiaMono.ttf", PdfEncodings.IDENTITY_H, true))
+                                .SetFont(PdfFontFactory.CreateFont("c:\\windows\\fonts\\arial.ttf", PdfEncodings.IDENTITY_H, true))
                                 .SetFontSize(28);
 
                             string tabela = cbxTabela.Text;
@@ -125,7 +125,7 @@ namespace Catalogo
                             string valorFormatado = preco.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
 
                             var paragrafo2 = new Paragraph(valorFormatado)
-                                .SetFont(PdfFontFactory.CreateFont("c:\\windows\\fonts\\CascadiaMono.ttf", PdfEncodings.IDENTITY_H, true))
+                                .SetFont(PdfFontFactory.CreateFont("c:\\windows\\fonts\\arial.ttf", PdfEncodings.IDENTITY_H, true))
                                 .SetFontSize(28);
 
                             // Define as coordenadas corretas para os parágrafos
@@ -264,7 +264,7 @@ namespace Catalogo
 
             if (cbxTamanho.Text != "")
             {
-                lblFont.Font = new Font(Properties.Settings.Default.font.Replace(".ttf", "").Replace("c:\\Windows\\Fonts\\", ""), Convert.ToInt32(cbxTamanho.Text), FontStyle.Regular);
+                lblFont.Font = new Font(cbxFont.Text, Convert.ToInt32(cbxTamanho.Text), FontStyle.Regular);
             }
         }
 
@@ -286,7 +286,7 @@ namespace Catalogo
             }
             else
             {
-                Font myFont = new Font(Properties.Settings.Default.font, Convert.ToInt32(cbxTamanho.Text), FontStyle.Regular);
+                Font myFont = new Font(cbxFont.Text, Convert.ToInt32(cbxTamanho.Text), FontStyle.Regular);
                 lblFont.Font = myFont;
             }
         }
@@ -297,23 +297,59 @@ namespace Catalogo
             int selected = 0;
 
             string[] arquivos = Directory.GetFiles("c:\\Windows\\Fonts\\");
-
+            ArrayList fonts = new ArrayList();
 
             foreach (string arquivo in arquivos)
             {
+                string fontName = ObterNomeDaFonte(arquivo);
+                ComboBoxItem item = new ComboBoxItem(arquivo, fontName);
+
                 if (arquivo.IndexOf(".ttf") > -1)
                 {
-                    cbxFont.Items.Add(new ComboBoxItem(arquivo, arquivo));
+                    if (!fonts.Contains(fontName)) {
 
-                    if (arquivo == Properties.Settings.Default.font)
-                    {
-                        selected = i;
+                        cbxFont.Items.Add(item);
+                        fonts.Add(fontName);
+
+                        if (arquivo == Properties.Settings.Default.font)
+                        {
+                            selected = i;
+                        }
+
+                        i++;
                     }
-
-                    i++;
                 }
             }
             cbxFont.SelectedIndex = selected;
+        }
+
+        private string ObterNomeDaFonte(string caminhoArquivoTTF)
+        {
+            try
+            {
+                // Criando uma coleção de fontes privadas
+                using (PrivateFontCollection fontCollection = new PrivateFontCollection())
+                {
+                    // Adicionando a fonte à coleção
+                    fontCollection.AddFontFile(caminhoArquivoTTF);
+
+                    // Verificando se há pelo menos uma fonte na coleção
+                    if (fontCollection.Families.Length > 0)
+                    {
+                        // Retornando o nome da primeira fonte na coleção
+                        return fontCollection.Families[0].Name;
+                    }
+                    else
+                    {
+                        return "Fonte não encontrada.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lidando com exceções, se ocorrerem
+                return $"Erro ao obter o nome da fonte: {ex.Message}";
+            }
         }
 
         public class ComboBoxItem
